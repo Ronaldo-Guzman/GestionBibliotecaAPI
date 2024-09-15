@@ -12,7 +12,7 @@
     }
     public class LibroRequest
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
 
         public string Titulo { get; set; } = null!;
 
