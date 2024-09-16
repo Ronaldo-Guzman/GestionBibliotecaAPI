@@ -1,6 +1,6 @@
 ﻿namespace GestionBibliotecaAPI.DTOs
 {
-    public class AutoreResponse
+    public class AutorResponse
     {
         public int Id { get; set; }
 
@@ -12,7 +12,7 @@
 
         public byte Estado { get; set; }
     }
-    public class AutoreRequest
+    public class AutorRequest
     {
         public int Id { get; set; }
 

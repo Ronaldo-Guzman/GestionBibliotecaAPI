@@ -13,7 +13,7 @@ public partial class Libro
 
     public byte Estado { get; set; }
 
-    public virtual Autore IdAutorNavigation { get; set; } = null!;
+    public virtual Autor IdAutorNavigation { get; set; } = null!;
 
     public virtual ICollection<Prestamo> Prestamos { get; set; } = new List<Prestamo>();
 }

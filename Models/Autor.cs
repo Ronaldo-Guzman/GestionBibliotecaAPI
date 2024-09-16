@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GestionBibliotecaAPI.Models;
 
-public partial class Autore
+public partial class Autor
 {
     public int Id { get; set; }
 
