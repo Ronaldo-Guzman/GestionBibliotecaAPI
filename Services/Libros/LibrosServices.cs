@@ -34,7 +34,7 @@ namespace GestionBibliotecaAPI.Services.Libros
 
 			return libroResponse;
 
-
+			
 		}
 
 		public async Task<List<LibroResponse>> GetLibros()

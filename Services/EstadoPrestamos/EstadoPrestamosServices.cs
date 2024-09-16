@@ -1,5 +1,7 @@
-﻿using GestionBibliotecaAPI.DTOs;
+﻿using AutoMapper;
+using GestionBibliotecaAPI.DTOs;
 using GestionBibliotecaAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestionBibliotecaAPI.Services.EstadoPrestamos
 {
@@ -32,14 +34,14 @@ namespace GestionBibliotecaAPI.Services.EstadoPrestamos
 
 			return estadoPrestamoResponse;
 		}
-		public async Task<List<EstadoPrestamoRequest>> GetEstadoPrestamos()
+		public async Task<List<EstadoPrestamoResponse>> GetEstadoPrestamos()
 		{
 			var estadoPrestamos = await _db.EstadoPrestamos.ToListAsync();
 			var estadoPrestamosList = _mapper.Map<List<EstadoPrestamo>, List<EstadoPrestamoResponse>>(estadoPrestamos);
 
 			return estadoPrestamosList;
 		}
-		public async Task<int> PostEstadoPrestamos(EstadoPrestamoRequest estadoPrestamos)
+		public async Task<int> PostEstadoPrestamo(EstadoPrestamoRequest estadoPrestamo)
 		{
 			var estadoPrestamoRequest = _mapper.Map<EstadoPrestamoRequest, EstadoPrestamo>(estadoPrestamo);
 			await _db.EstadoPrestamos.AddAsync(estadoPrestamoRequest);
@@ -52,9 +54,9 @@ namespace GestionBibliotecaAPI.Services.EstadoPrestamos
 			if (entity == null)
 				return -1;
 
-			entity.Nombre = estadoPrestamos.NombreEstado;
+			entity.NombreEstado = estadoPrestamos.NombreEstado;
 
-			_db.Libros.Update(entity);
+			_db.EstadoPrestamos.Update(entity);
 
 			return await _db.SaveChangesAsync();
 

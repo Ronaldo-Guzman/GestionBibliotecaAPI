@@ -14,7 +14,7 @@ public partial class BibliotecadbContext : DbContext
     {
     }
 
-    public virtual DbSet<Autore> Autores { get; set; }
+    public virtual DbSet<Autor> Autores { get; set; }
 
     public virtual DbSet<EstadoPrestamo> EstadoPrestamos { get; set; }
 
@@ -32,7 +32,7 @@ public partial class BibliotecadbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Autore>(entity =>
+        modelBuilder.Entity<Autor>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__autores__3213E83F47CB81C1");
 
