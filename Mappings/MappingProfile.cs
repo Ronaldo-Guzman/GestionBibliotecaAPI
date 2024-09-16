@@ -11,14 +11,14 @@ namespace GestionBibliotecaAPI.Mappings
 
             // Modelo -> DTO
             CreateMap<Libro, LibroResponse>();
-            CreateMap<Autor, AutoreResponse>();
+            CreateMap<Autor, AutorResponse>();
             CreateMap<Usuario, UsuarioResponse>();
             CreateMap<Prestamo, PrestamoResponse>();
             CreateMap<EstadoPrestamo, EstadoPrestamoResponse>();
 
             // DTO -> Modelo
             CreateMap<LibroRequest, Libro>();
-            CreateMap<AutoreRequest, Autor>();
+            CreateMap<AutorRequest, Autor>();
             CreateMap<UsuarioRequest, Usuario>();
             CreateMap<PrestamoRequest, Prestamo>();
             CreateMap<EstadoPrestamoRequest, EstadoPrestamo>();
