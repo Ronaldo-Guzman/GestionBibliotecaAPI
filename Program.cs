@@ -1,5 +1,8 @@
 using GestionBibliotecaAPI.DTOs;
+using GestionBibliotecaAPI.Endpoints;
 using GestionBibliotecaAPI.Models;
+using GestionBibliotecaAPI.Services.Libros;
+using GestionBibliotecaAPI.Services.Usuarios;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -16,6 +19,9 @@ builder.Services.AddDbContext<BibliotecadbContext>(
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+builder.Services.AddScoped<ILibrosServices, LibrosServices>();
+builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -26,6 +32,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.useEndpoints();
 
 app.MapGet("/api/autores/", () =>
 {

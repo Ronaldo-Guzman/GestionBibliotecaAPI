@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 
 namespace GestionBibliotecaAPI.Edpoints
 {
-	public static class LibroEdpoints
+	public static class LibroEndpoints
 	{
 		public static async void Add(this IEndpointRouteBuilder routes)
 		{
@@ -47,7 +47,6 @@ namespace GestionBibliotecaAPI.Edpoints
 				Description = "Crear un nuevo producto."
 			});
 
-
 			group.MapPut("/{id}", async (int id, LibroRequest libro, ILibrosServices librosServices) =>
 			{
 				
@@ -63,8 +62,6 @@ namespace GestionBibliotecaAPI.Edpoints
 				Description = "Actualiza un nuevo libro existente."
 			});
 
-
-
 			group.MapDelete("/{id}", async (int id, LibroRequest libro, ILibrosServices librosServices) =>
 			{
 			
@@ -78,10 +75,6 @@ namespace GestionBibliotecaAPI.Edpoints
 				Summary = "Eliminar Libros",
 				Description = "Eliminar un nuevo libro existente."
 			});
-
-
-
-
 		}
 	}
 }
