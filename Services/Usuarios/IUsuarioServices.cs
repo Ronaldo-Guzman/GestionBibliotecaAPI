@@ -9,5 +9,6 @@ namespace GestionBibliotecaAPI.Services.Usuarios
         Task<UsuarioResponse> GetUsuario(int usuarioId);
         Task<int> PutUsuario(int usuarioId, UsuarioRequest usuario);
         Task<int> DeleteUsuario(int usuarioId);
+        Task<UsuarioResponse> Login (UsuarioRequest usuario);
     }
 }
