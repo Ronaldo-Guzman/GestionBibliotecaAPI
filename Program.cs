@@ -90,27 +90,27 @@ app.MapDelete("/api/libros/{id}", (int id) =>
 
 app.MapGet("/api/prestamos/", () =>
 {
-	return "Lista de préstamos";
+	return "Lista de prï¿½stamos";
 });
 
 app.MapGet("/api/prestamos/{id}", (int id) =>
 {
-	return $"Buscando préstamo con id: {id}";
+	return $"Buscando prï¿½stamo con id: {id}";
 });
 
 app.MapPost("/api/prestamos", (PrestamoRequest prestamo) =>
 {
-	return $"Guardando préstamo con id: {prestamo.IdPrestamo}";
+	return $"Guardando prï¿½stamo con id: {prestamo.IdPrestamo}";
 });
 
 app.MapPut("/api/prestamos/{id}", (int id, PrestamoRequest prestamo) =>
 {
-	return $"Modificando préstamo con id: {id}";
+	return $"Modificando prï¿½stamo con id: {id}";
 });
 
 app.MapDelete("/api/prestamos/{id}", (int id) =>
 {
-	return $"Eliminando préstamo con id: {id}";
+	return $"Eliminando prï¿½stamo con id: {id}";
 });
 
 app.Run();

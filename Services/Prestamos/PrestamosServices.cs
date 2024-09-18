@@ -34,11 +34,9 @@ namespace GestionBibliotecaAPI.Services.Prestamos
 			return prestamoList;
 		}
 
-		public async Task<PrestamoResponse> GetPrestamos(int prestamoId)
+		public async Task<PrestamoResponse> GetPrestamo(int prestamoId)
 		{
 			var prestamo = await _db.Prestamos.FindAsync(prestamoId);
-			if (prestamo == null)
-				return null;
 
 			var prestamoResponse = _mapper.Map<Prestamo, PrestamoResponse>(prestamo);
 			return prestamoResponse;

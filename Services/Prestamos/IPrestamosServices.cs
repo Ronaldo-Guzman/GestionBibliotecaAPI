@@ -6,7 +6,7 @@ namespace GestionBibliotecaAPI.Services.Prestamos
 	{
 		Task<int> PostPrestamo(PrestamoRequest prestamo);
 		Task<List<PrestamoResponse>> GetPrestamos();
-		Task<PrestamoResponse> GetPrestamos(int prestamoId);
+		Task<PrestamoResponse> GetPrestamo(int prestamoId);
 		Task<int> PutPrestamo(int PrestamoId, PrestamoRequest prestamo);
 		Task<int> DeletePrestamo(int PrestamoId);
 	}
