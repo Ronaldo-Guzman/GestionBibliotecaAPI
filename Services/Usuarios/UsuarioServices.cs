@@ -43,6 +43,17 @@ namespace GestionBibliotecaAPI.Services.Usuarios
             return usuariosList;
         }
 
+        public async Task<UsuarioResponse> Login(UsuarioRequest usuario)
+        {
+            var usuarioEntity = await _db.Usuarios.FirstOrDefaultAsync(
+                o => o.NombreUsuario == usuario.NombreUsuario
+                && o.Contraseña == usuario.Contraseña
+                );
+
+            var usuarioResponse = _mapper.Map<Usuario, UsuarioResponse>(usuarioEntity);
+
+            return usuarioResponse;
+        }
         public async Task<int> PostUsuario(UsuarioRequest usuario)
         {
             var entity = _mapper.Map<UsuarioRequest, Usuario>(usuario);
