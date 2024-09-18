@@ -49,8 +49,8 @@ namespace GestionBibliotecaAPI.Services.Libros
 		{
 			var libroRequest = _mapper.Map<LibroRequest, Libro>(libro);
 			await _db.Libros.AddAsync(libroRequest);
-
-			return await _db.SaveChangesAsync();
+			await _db.SaveChangesAsync();
+			return libroRequest.Id;
 		}
 
 		public async Task<int> PutLibro(int libroId, LibroRequest libro)

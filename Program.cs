@@ -51,4 +51,58 @@ app.MapDelete("/api/autores/{id}", (int id) =>
 {
 	return $"Eliminando autor con id: {id}";
 });
+
+
+app.MapGet("/api/libros/", () =>
+{
+	return "Lista de libros";
+});
+
+app.MapGet("/api/libros/{id}", (int id) =>
+{
+	return $"Buscando libro con id: {id}";
+});
+
+app.MapPost("/api/libros", (LibroRequest libro) =>
+{
+	return $"Guardando libro con id: {libro.Id}";
+});
+
+app.MapPut("/api/libros/{id}", (int id, LibroRequest libro) =>
+{
+	return $"Modificando libro con id: {id}";
+});
+
+app.MapDelete("/api/libros/{id}", (int id) =>
+{
+	return $"Eliminando libro con id: {id}";
+});
+
+
+
+app.MapGet("/api/prestamos/", () =>
+{
+	return "Lista de préstamos";
+});
+
+app.MapGet("/api/prestamos/{id}", (int id) =>
+{
+	return $"Buscando préstamo con id: {id}";
+});
+
+app.MapPost("/api/prestamos", (PrestamoRequest prestamo) =>
+{
+	return $"Guardando préstamo con id: {prestamo.IdPrestamo}";
+});
+
+app.MapPut("/api/prestamos/{id}", (int id, PrestamoRequest prestamo) =>
+{
+	return $"Modificando préstamo con id: {id}";
+});
+
+app.MapDelete("/api/prestamos/{id}", (int id) =>
+{
+	return $"Eliminando préstamo con id: {id}";
+});
+
 app.Run();

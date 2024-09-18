@@ -54,7 +54,6 @@ namespace GestionBibliotecaAPI.Services.Usuarios
 
             return usuarioResponse;
         }
-
         public async Task<int> PostUsuario(UsuarioRequest usuario)
         {
             var entity = _mapper.Map<UsuarioRequest, Usuario>(usuario);
