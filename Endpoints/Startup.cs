@@ -6,7 +6,10 @@ namespace GestionBibliotecaAPI.Endpoints
     {
         public static void useEndpoints (this WebApplication app)
         {
+            AutorEndpoints.Add (app);
+            EstadoPrestamoEndpoints.Add (app);
             LibroEndpoints.Add (app);
+            PrestamoEdpoints.Add (app);
             UsuarioEndpoints.Add (app);
         }
     }

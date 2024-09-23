@@ -60,7 +60,7 @@ namespace GestionBibliotecaAPI.Edpoints
 				Description = "Actualiza un prestamo existente."
 			});
 
-			group.MapDelete("/{id}", async (int id, PrestamoRequest prestamo, IPrestamosServices prestamosServices) =>
+			group.MapDelete("/{id}", async (int id, IPrestamosServices prestamosServices) =>
 			{
 				var result = await prestamosServices.DeletePrestamo(id);
 				if (result == -1)

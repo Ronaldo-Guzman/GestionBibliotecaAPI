@@ -64,7 +64,7 @@ namespace GestionBibliotecaAPI.Endpoints
                 Description = "Actualiza un usuario existente."
             });
 
-            group.MapDelete("/{id}", async (int id, UsuarioRequest usuario, IUsuarioServices usuarioServices) =>
+            group.MapDelete("/{id}", async (int id, IUsuarioServices usuarioServices) =>
             {
 
                 var result = await usuarioServices.DeleteUsuario(id);
