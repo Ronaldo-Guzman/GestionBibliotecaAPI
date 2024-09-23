@@ -62,7 +62,7 @@ namespace GestionBibliotecaAPI.Edpoints
 				Description = "Actualiza un nuevo libro existente."
 			});
 
-			group.MapDelete("/{id}", async (int id, LibroRequest libro, ILibrosServices librosServices) =>
+			group.MapDelete("/{id}", async (int id, ILibrosServices librosServices) =>
 			{
 			
 				var result = await librosServices.DeleteLibro(id);

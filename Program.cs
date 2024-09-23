@@ -8,13 +8,44 @@ using System.Reflection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.OpenApi.Models;
+using GestionBibliotecaAPI.Services.Autores;
+using GestionBibliotecaAPI.Services.EstadoPrestamos;
+using GestionBibliotecaAPI.Services.Prestamos;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+	options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme 
+	{
+		Name = "Authorization",
+		Type = SecuritySchemeType.Http,
+		Scheme = "Bearer",
+		BearerFormat = "JWT",
+		In = ParameterLocation.Header,
+		Description = "Ingrese el token JWT en el siguiente formato: Bearer {token}"
+	});
+
+	options.AddSecurityRequirement(new OpenApiSecurityRequirement
+	{
+		{
+			new OpenApiSecurityScheme
+			{
+				Reference = new OpenApiReference
+				{
+					Type = ReferenceType.SecurityScheme,
+					Id = "Bearer"
+				}
+			},
+			new string[] {}
+		}
+	});
+});
 
 builder.Services.AddDbContext<BibliotecadbContext>(
     o=>o.UseSqlServer(builder.Configuration.GetConnectionString("BibliotecaDbConnection"))
@@ -22,7 +53,10 @@ builder.Services.AddDbContext<BibliotecadbContext>(
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+builder.Services.AddScoped<IAutoresServices, AutoresServices>();
+builder.Services.AddScoped<IEstadoPrestamosServices, EstadoPrestamosServices>();
 builder.Services.AddScoped<ILibrosServices, LibrosServices>();
+builder.Services.AddScoped<IPrestamosServices, PrestamosServices>();
 builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
 
 var jwtSettings = builder.Configuration.GetSection("JwtSetting");
@@ -42,12 +76,12 @@ options => {
 	options.SaveToken = true;
 	options.TokenValidationParameters = new TokenValidationParameters
 	{
-		ValidateIssuer = true,
+        ValidateIssuer = true,
 		ValidateAudience = true,
 		ValidateIssuerSigningKey = true,
 		ValidIssuer = jwtSettings.GetValue<string>("Issuer"),
 		ValidAudience = jwtSettings.GetValue<string>("Audience"),
-		IssuerSigingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
 	};
 	});
 
@@ -64,6 +98,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 
 app.useEndpoints();
 
