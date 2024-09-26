@@ -86,13 +86,13 @@ namespace GestionBibliotecaAPI.Endpoints
                     return Results.Unauthorized();
                 else
                 {
-                    var jwtSettings = config.GetSection("jwtSetting");
-                    var secretkey = jwtSettings.GetValue<string>("Secretkey");
+                    var jwtSettings = config.GetSection("JwtSetting");
+                    var secretKey = jwtSettings.GetValue<string>("SecretKey");
                     var issuer = jwtSettings.GetValue<string>("Issuer");
                     var audience = jwtSettings.GetValue<string>("Audience");
 
                     var tokenHandler = new JwtSecurityTokenHandler();
-                    var key = Encoding.UTF8.GetBytes(secretkey);
+                    var key = Encoding.UTF8.GetBytes(secretKey);
 
 
                     var tokenDescriptor = new SecurityTokenDescriptor
