@@ -23,7 +23,7 @@ namespace GestionBibliotecaAPI.Endpoints
             {
                 Summary = "Obtener Usuarios",
                 Description = "Muestra una lista de todos los usuarios."
-            });
+            }).RequireAuthorization();
 
             group.MapGet("/{id}", async (int id, IUsuarioServices usuarioServices) =>
             {
@@ -36,7 +36,7 @@ namespace GestionBibliotecaAPI.Endpoints
             {
                 Summary = "Obtener Usuario",
                 Description = "Buscar un usuario por id."
-            });
+            }).RequireAuthorization();
 
             group.MapPost("/", async (UsuarioRequest usuario, IUsuarioServices usuarioServices) =>
             {
@@ -49,7 +49,7 @@ namespace GestionBibliotecaAPI.Endpoints
             {
                 Summary = "Crear nuevo Usuario",
                 Description = "Crear un nuevo Usuario."
-            });
+            }).RequireAuthorization();
 
             group.MapPut("/{id}", async (int id, UsuarioRequest usuario, IUsuarioServices usuarioServices) =>
             {
@@ -62,7 +62,7 @@ namespace GestionBibliotecaAPI.Endpoints
             {
                 Summary = "Modificar Usuario",
                 Description = "Actualiza un usuario existente."
-            });
+            }).RequireAuthorization();
 
             group.MapDelete("/{id}", async (int id, IUsuarioServices usuarioServices) =>
             {
@@ -76,7 +76,7 @@ namespace GestionBibliotecaAPI.Endpoints
             {
                 Summary = "Eliminar Usuario",
                 Description = "Eliminar un usuario existente."
-            });
+            }).RequireAuthorization();
 
             group.MapPost("/login", async (UsuarioRequest usuario, IUsuarioServices usuarioServices, IConfiguration config) =>
             {
