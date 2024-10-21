@@ -103,3 +103,6 @@ app.UseAuthorization();
 app.useEndpoints();
 
 app.Run();
+
+
+public partial class Program { }
