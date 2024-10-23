@@ -5,7 +5,7 @@ VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionBibliotecaAPI", "GestionBibliotecaAPI.csproj", "{2CDE039B-6A52-4C1B-B9B7-72A34FF4030C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionBibliotecaAPI.IntegrationTest", "..\GestionBibliotecaAPI.IntegrationTest\GestionBibliotecaAPI.IntegrationTest.csproj", "{3650D0BE-238E-4922-B651-34BA702B7F65}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionBibliotecaAPI.IntegrationTest", "GestionBibliotecaAPI.IntegrationTest\GestionBibliotecaAPI.IntegrationTest.csproj", "{3650D0BE-238E-4922-B651-34BA702B7F65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
