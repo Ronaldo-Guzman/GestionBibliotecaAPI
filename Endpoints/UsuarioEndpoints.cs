@@ -1,4 +1,5 @@
 ﻿using GestionBibliotecaAPI.DTOs;
+using GestionBibliotecaAPI.Models;
 using GestionBibliotecaAPI.Services.Usuarios;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -41,10 +42,21 @@ namespace GestionBibliotecaAPI.Endpoints
             group.MapPost("/", async (UsuarioRequest usuario, IUsuarioServices usuarioServices) =>
             {
                 if (usuario == null)
-                    return Results.BadRequest();
-                var id = await usuarioServices.PostUsuario(usuario);
+                    return Results.BadRequest(); // 400 Bad Request: La solicitud no se puede procesar, error de
 
-                return Results.Created($"api/usuarios/{id}", usuario);
+                try
+                {
+                    var id = await usuarioServices.PostUsuario(usuario);
+                    // 201 Created: El recurso ce creó con éxito, se devuelve la ubicacion del recurso creado
+                    return Results.Created($"api/usuarios/{id}", usuario);
+                }
+                catch (Exception)
+                {
+                    // 409 Conflict
+                    return Results.Conflict("El nombre de usuario ya está en uso");
+                }
+
+
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
                 Summary = "Crear nuevo Usuario",
