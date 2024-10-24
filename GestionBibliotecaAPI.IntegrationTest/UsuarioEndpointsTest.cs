@@ -1,14 +1,9 @@
 ﻿using GestionBibliotecaAPI.DTOs;
 using Microsoft.AspNetCore.Mvc.Testing;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net.Http.Headers;
-using GestionBibliotecaAPI.Models;
 using System.Net;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace GestionBibliotecaAPI.IntegrationTest
 {

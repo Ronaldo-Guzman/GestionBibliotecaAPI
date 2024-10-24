@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GestionBibliotecaAPI.csproj" />
+    <ProjectReference Include="..\GestionBibliotecaAPI\GestionBibliotecaAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
