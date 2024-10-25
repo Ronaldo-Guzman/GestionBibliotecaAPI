@@ -79,7 +79,7 @@ namespace GestionBibliotecaAPI.IntegrationTest
             //Arrage : Pasar autorizacion a la cabecera y preparar el nuevo usuario 
             AgregarTokenAlaCabecera();
 
-            var newUsuario = new UsuarioRequest { NombreUsuario = "Alex", Contraseña = "123", IdRol = 1 };
+            var newUsuario = new UsuarioRequest { NombreUsuario = "Mendez", Contraseña = "123", IdRol = 1 };
 
             // ACT: Realizar solicitud para Guargar el usuario 
 
@@ -111,7 +111,7 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             //Arrage : Pasar autorizacion a la cabecera y preparar el usuario modificado, pasando un ID
             AgregarTokenAlaCabecera();
-            var existingUsuario = new UsuarioRequest { NombreUsuario = "Rauda", Contraseña = "1234", IdRol = 1 };
+            var existingUsuario = new UsuarioRequest { NombreUsuario = "GM", Contraseña = "132", IdRol = 1 };
             var IdUsuario = 18;
             // ACT: Realizar solicitud para modificar usuario existente
             var response = await _httpClient.PutAsJsonAsync($"api/usuarios/{IdUsuario}", existingUsuario);
@@ -124,7 +124,7 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             //Arrage : Pasar autorizacion a la cabecera, pasando un ID
             AgregarTokenAlaCabecera();
-            var IdUsuario = 14;
+            var IdUsuario = 31;
             // ACT: Realizar solicitud para eliminar usuario existente
             var response = await _httpClient.DeleteAsync($"api/usuarios/{IdUsuario}");
             //Assert Verifica que la respuesta sea Noontent
@@ -137,7 +137,7 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             //Arrage : Pasar autorizacion a la cabecera, pasando un ID
             AgregarTokenAlaCabecera();
-            var IdUsuario = 16;
+            var IdUsuario = 99;
             // ACT: Realizar solicitud para eliminar usuario existente
             var response = await _httpClient.DeleteAsync($"api/usuarios/{IdUsuario}");
             //Assert Verifica que la respuesta sea Noontent

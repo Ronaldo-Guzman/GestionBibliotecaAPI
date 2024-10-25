@@ -61,8 +61,8 @@ namespace GestionBibliotecaAPI.Tests
             var nuevoPrestamo = new PrestamoRequest
             {
                 IdPrestamo = 12,
-                IdUsuario = 2,
-                IdLibro = 3,
+                IdUsuario = 18,
+                IdLibro = 9,
                 FechaPrestamo = DateOnly.FromDateTime(DateTime.Now),
                 FechaDevolucion = DateOnly.FromDateTime(DateTime.Now.AddDays(14)),
                 IdEstadoPrestamo = 1
@@ -88,8 +88,8 @@ namespace GestionBibliotecaAPI.Tests
             var prestamoModificado = new PrestamoRequest
             {
                 IdPrestamo = idPrestamo,
-                IdUsuario = 2,
-                IdLibro = 4,
+                IdUsuario = 18,
+                IdLibro = 9,
                 FechaPrestamo = DateOnly.FromDateTime(DateTime.Now),
                 FechaDevolucion = DateOnly.FromDateTime(DateTime.Now.AddDays(10)),
                 IdEstadoPrestamo = 2
@@ -107,7 +107,7 @@ namespace GestionBibliotecaAPI.Tests
         public async Task EliminarPrestamo_PrestamoExistente_RetornaNoContent()
         {
             // Arrange
-            int idPrestamo = 1;
+            int idPrestamo = 12;
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "token_valido");
 
             // Act
