@@ -65,7 +65,10 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             // Arrange: Pasar autorizacion a la cabecera y establecer ID de usuario existente
             AgregarTokenAlaCabecera();
+
             var IdUsuario = 5;
+            var IdUsuario = 18;
+ master
             // ACT: Realizar solicitud para obtener usuario por ID
             var usuario = await _httpClient.GetFromJsonAsync<UsuarioResponse>($"api/usuarios/{IdUsuario}");
             // Assert:  Verificar que el usuario sea nulo y que tenga el ID correcto
@@ -111,8 +114,13 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             //Arrage : Pasar autorizacion a la cabecera y preparar el usuario modificado, pasando un ID
             AgregarTokenAlaCabecera();
+
             var existingUsuario = new UsuarioRequest { NombreUsuario = "Rivas", Contraseña = "1234", IdRol = 1 };
             var IdUsuario = 7;
+=======
+            var existingUsuario = new UsuarioRequest { NombreUsuario = "Rauda", Contraseña = "1234", IdRol = 1 };
+            var IdUsuario = 18;
+> master
             // ACT: Realizar solicitud para modificar usuario existente
             var response = await _httpClient.PutAsJsonAsync($"api/usuarios/{IdUsuario}", existingUsuario);
             //Assert Verifica que la respuesta sea OK
@@ -124,7 +132,10 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             //Arrage : Pasar autorizacion a la cabecera, pasando un ID
             AgregarTokenAlaCabecera();
+
             var IdUsuario = 7;
+
+
             // ACT: Realizar solicitud para eliminar usuario existente
             var response = await _httpClient.DeleteAsync($"api/usuarios/{IdUsuario}");
             //Assert Verifica que la respuesta sea Noontent
