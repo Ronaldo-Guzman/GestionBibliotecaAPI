@@ -1,5 +1,7 @@
 ﻿using GestionBibliotecaAPI.DTOs;
+using GestionBibliotecaAPI.Models;
 using GestionBibliotecaAPI.Services.Libros;
+using GestionBibliotecaAPI.Services.Usuarios;
 using Microsoft.OpenApi.Models;
 
 namespace GestionBibliotecaAPI.Edpoints
@@ -37,8 +39,24 @@ namespace GestionBibliotecaAPI.Edpoints
 			group.MapPost("/", async (LibroRequest libro, ILibrosServices librosServices) =>
 			{
 				if (libro == null)
-					return Results.BadRequest();
-				var id = await librosServices.PostLibro(libro);
+                    return Results.BadRequest();
+
+
+                try
+                {
+                    var idlibro = await librosServices.PostLibro(libro);
+                    // 201 Created: El recurso ce creó con éxito, se devuelve la ubicacion del recurso creado
+                    return Results.Created($"api/libros/{idlibro}", libro);
+                }
+                catch (Exception)
+                {
+                    // 409 Conflict
+                    return Results.Conflict("El nombre de usuario ya está en uso");
+                }
+
+
+
+                var id = await librosServices.PostLibro(libro);
 
 				return Results.Created($"api/libros/{id}", libro);
 			}).WithOpenApi(o => new OpenApiOperation(o)
