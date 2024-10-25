@@ -152,7 +152,7 @@ namespace GestionBibliotecaAPI.IntegrationTest
         {
             // Arrange: Pasar autorización a la cabecera y establecer un ID de libro no existente
             AgregarTokenAlaCabecera();
-            var IdLibro = 999; // ID que no existe en la base de datos
+            var IdLibro = 99; // ID que no existe en la base de datos
 
             // Act: Realizar solicitud para eliminar un libro no existente
             var response = await _httpClient.DeleteAsync($"api/libros/{IdLibro}");
